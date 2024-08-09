@@ -1,0 +1,33 @@
+
+Kasa Bazar Design Changing 
+===========
+Terms & Conditions
+Privacy Policy
+Mega Offer
+Header 
+Footer 
+Homepage
+Product Details Page
+Search Page
+
+
+
+https://foodi.store.bponi.com/
+https://kachabazar-store-nine.vercel.app/order/668aa85ce878c3000cb6a523
+https://kachabazar-admin.netlify.app/settings?settingTab=common-settings
+https://github.com/FazlyRabbi/EC-Com-Bback.git
+https://github.com/FazlyRabbi/EC-Com-Front.git
+https://github.com/FazlyRabbi/EC-Com-Admin.git
+
+
+Due Task---
+
+ Issues __ Going Login Pager after login/ will go to checkout page -- done
+ have to hide email from user shipping page
+ Need to remove Bkash Button from checkout page
+ Checkout Button is not working properly
+ Neet to complete rest of the category's
+ Fix Mobile Header
+ Fix Products Page
+
+Configure all domain and vps then lunch the site 
