@@ -21,27 +21,34 @@ jobs:
           APP_PATH: '/var/store'
         run: |
           sshpass -p "$PASSWORD" ssh -o StrictHostKeyChecking=no $USER@$HOST << 'EOF'
-            # Ensure PATH includes the location of PM2 and Node.js
+            # Load NVM and set PATH
+            source /root/.nvm/nvm.sh
             export PATH=$PATH:/root/.nvm/versions/node/v20.16.0/bin
-            
+
             # Navigate to the application directory
-            cd $APP_PATH
+            cd $APP_PATH || { echo 'Directory not found'; exit 1; }
+
+            # Ensure this is a Git repository
+            if [ ! -d ".git" ]; then
+              echo "Not a Git repository. Exiting."
+              exit 1
+            fi
 
             # Pull the latest code from the repository
             echo "Pulling latest code from repository..."
-            git pull origin main
+            git pull || { echo 'Git pull failed'; exit 1; }
 
             # Install dependencies
             echo "Installing dependencies..."
-            yarn 
+            yarn || { echo 'Yarn install failed'; exit 1; }
 
             # Build the project
             echo "Building the project..."
-            yarn build 
+            yarn build || { echo 'Yarn build failed'; exit 1; }
 
-            # Reload PM2 process (use the process name if you’re unsure of the ID)
+            # Reload PM2 process (use the process name or correct ID)
             echo "Reloading PM2 process..."
-            pm2 reload app-name || { echo 'PM2 reload failed'; exit 1; }
+            pm2 reload 1 --update-env || { echo 'PM2 reload failed'; exit 1; }
 
             # Save PM2 process list
             echo "Saving PM2 process list..."
