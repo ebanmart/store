@@ -26,7 +26,12 @@ jobs:
             export PATH=$PATH:/root/.nvm/versions/node/v20.16.0/bin
 
             # Navigate to the application directory
-            cd $APP_PATH || { echo 'Directory not found'; exit 1; }
+            cd "/var/store" || { echo 'Directory not found'; exit 1; }
+
+            # Output current directory and files for debugging
+            echo "Current directory: $(pwd)"
+            echo "Directory contents:"
+            ls -la
 
             # Ensure this is a Git repository
             if [ ! -d ".git" ]; then
