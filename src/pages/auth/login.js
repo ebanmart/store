@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FiLock, FiMail } from "react-icons/fi";
 import { MdLocalPhone } from "react-icons/md";
-
 //internal  import
 import Layout from "@layout/Layout";
 import Error from "@components/form/Error";
@@ -10,16 +9,12 @@ import InputArea from "@components/form/InputArea";
 import BottomNavigation from "@components/login/BottomNavigation";
 
 const Login = () => {
-
-
   const [phoneNumber, setPhoneNumber] = useState("");
-
   const [isValid, setIsValid] = useState(true);
-
+  
   const { handleSubmit, submitHandler, register, errors, loading } =
     useLoginSubmit(phoneNumber);
 
-    
   const handleChange = (e) => {
     let inputValue = e.target.value;
     // Remove any non-numeric characters from the input

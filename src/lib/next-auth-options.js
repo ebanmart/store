@@ -9,21 +9,22 @@ import SettingServices from "@services/SettingServices";
 import CustomerServices from "@services/CustomerServices";
 
 export const getDynamicAuthOptions = async () => {
-  const storeSetting = await SettingServices.getStoreSetting();
+  // const storeSetting = await SettingServices.getStoreSetting();
 
   const providers = [
-    Google({
-      clientId: storeSetting?.google_id || "",
-      clientSecret: storeSetting?.google_secret || "",
-    }),
-    GitHub({
-      clientId: storeSetting?.github_id || "",
-      clientSecret: storeSetting?.github_secret || "",
-    }),
-    Facebook({
-      clientId: storeSetting?.facebook_id || "",
-      clientSecret: storeSetting?.facebook_secret || "",
-    }),
+    // Google({
+    //   clientId: storeSetting?.google_id || "",
+    //   clientSecret: storeSetting?.google_secret || "",
+    // }),
+    // GitHub({
+    //   clientId: storeSetting?.github_id || "",
+    //   clientSecret: storeSetting?.github_secret || "",
+    // }),
+    // Facebook({
+    //   clientId: storeSetting?.facebook_id || "",
+    //   clientSecret: storeSetting?.facebook_secret || "",
+    // }),
+
     Credentials({
       name: "Credentials",
       credentials: {
@@ -33,7 +34,6 @@ export const getDynamicAuthOptions = async () => {
       authorize: async (credentials) => {
         const userInfo = await CustomerServices.loginCustomer(credentials);
 
- 
         return userInfo;
       },
     }),

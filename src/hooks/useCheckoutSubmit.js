@@ -19,7 +19,6 @@ import NotificationServices from "@services/NotificationServices";
 
 const useCheckoutSubmit = (storeSetting) => {
   const { dispatch } = useContext(UserContext);
-
   const [error, setError] = useState("");
   const [total, setTotal] = useState("");
   const [couponInfo, setCouponInfo] = useState({});
@@ -120,7 +119,7 @@ const useCheckoutSubmit = (storeSetting) => {
       setError("");
 
       const userDetails = {
-        name: `${data.firstName} ${data.lastName}`,
+        name: data.name,
         contact: data.contact,
         email: data.email,
         address: data.address,
@@ -449,7 +448,7 @@ const useCheckoutSubmit = (storeSetting) => {
     showCard,
     setShowCard,
     error,
-    
+
     couponInfo,
     couponRef,
     total,

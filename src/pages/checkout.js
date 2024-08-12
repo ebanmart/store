@@ -60,15 +60,6 @@ const Checkout = () => {
     handleDefaultShippingAddress,
   } = useCheckoutSubmit();
 
-  // console.log(
-  //   "shippingCost",
-  //   shippingCost,
-  //   "  storeCustomizationSetting?.checkout",
-  //   storeCustomizationSetting?.checkout
-  // );
-
-  // console.log("storeCustomizationSetting", storeCustomizationSetting);
-
   return (
     <>
       <Layout title="Checkout" description="this is checkout page">
@@ -77,7 +68,7 @@ const Checkout = () => {
             <div className="md:w-full lg:w-3/5 flex h-full flex-col order-2 sm:order-1 lg:order-1">
               <div className="mt-5 md:mt-0 md:col-span-2">
                 <form onSubmit={handleSubmit(submitHandler)}>
-                  {hasShippingAddress && (
+                  {/* {hasShippingAddress && (
                     <div className="flex justify-end my-2">
                       <SwitchToggle
                         id="shipping-address"
@@ -86,7 +77,7 @@ const Checkout = () => {
                         handleProcess={handleDefaultShippingAddress}
                       />
                     </div>
-                  )}
+                  )} */}
 
                   <div className="form-group">
                     <h2 className="font-semibold font-serif text-base text-gray-700 pb-3">
@@ -97,53 +88,21 @@ const Checkout = () => {
                       <div className="col-span-6 sm:col-span-3">
                         <InputArea
                           register={register}
-                          label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.first_name
-                          )}
-                          name="firstName"
+                          label={"Name"}
+                          name="name"
                           type="text"
-                          placeholder="John"
+                          placeholder="Name"
                         />
-                        <Error errorName={errors.firstName} />
+                        <Error errorName={errors.name} />
                       </div>
 
                       <div className="col-span-6 sm:col-span-3">
                         <InputArea
                           register={register}
-                          label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.last_name
-                          )}
-                          name="lastName"
-                          type="text"
-                          placeholder="Doe"
-                          required={false}
-                        />
-                        <Error errorName={errors.lastName} />
-                      </div>
-
-                      {/* <div className="col-span-6 sm:col-span-3">
-                        <InputArea
-                          register={register}
-                          label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.email_address
-                          )}
-                          name="email"
-                          type="email"
-                          readOnly={true}
-                          placeholder="youremail@gmail.com"
-                        />
-                        <Error errorName={errors.email} />
-                      </div> */}
-
-                      <div className="col-span-6 sm:col-span-3">
-                        <InputArea
-                          register={register}
-                          label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.checkout_phone
-                          )}
+                          label={"Phone"}
                           name="contact"
                           type="tel"
-                          placeholder="+062-6532956"
+                          placeholder="Phone"
                         />
 
                         <Error errorName={errors.contact} />
@@ -160,68 +119,24 @@ const Checkout = () => {
                       <div className="col-span-6">
                         <InputArea
                           register={register}
-                          label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.street_address
-                          )}
+                          label={"Address"}
                           name="address"
                           type="text"
                           placeholder="123 Boulevard Rd, Beverley Hills"
                         />
                         <Error errorName={errors.address} />
                       </div>
-
-                      {/* <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                        <InputArea
-                          register={register}
-                          label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.city
-                          )}
-                          name="city"
-                          type="text"
-                          placeholder="Los Angeles"
-                        />
-                        <Error errorName={errors.city} />
-                      </div>
-
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                        <InputArea
-                          register={register}
-                          label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.country
-                          )}
-                          name="country"
-                          type="text"
-                          placeholder="United States"
-                        />
-                        <Error errorName={errors.country} />
-                      </div>
-
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                        <InputArea
-                          register={register}
-                          label={showingTranslateValue(
-                            storeCustomizationSetting?.checkout?.zip_code
-                          )}
-                          name="zipCode"
-                          type="text"
-                          placeholder="2345"
-                        />
-                        <Error errorName={errors.zipCode} />
-                      </div> */}
                     </div>
-
                     <Label label={"Shipping Cost"} />
+
                     <div className="grid grid-cols-6 gap-6">
                       <div className="col-span-6 sm:col-span-3">
                         <InputShipping
                           currency={currency}
                           handleShippingCost={handleShippingCost}
                           register={register}
-                          value=""
-                          // value={showingTranslateValue(
-                          //   storeCustomizationSetting?.checkout
-                          //     ?.shipping_name_two
-                          // )}
+                           defaultChacked={true}
+                          value={"Inside Dhaka"}
                           description={showingTranslateValue(
                             storeCustomizationSetting?.checkout
                               ?.shipping_one_desc
@@ -238,29 +153,27 @@ const Checkout = () => {
                         <Error errorName={errors.shippingOption} />
                       </div>
 
-                      {/* <div className="col-span-6 sm:col-span-3">
+                      <div className="col-span-6 sm:col-span-3">
                         <InputShipping
                           currency={currency}
                           handleShippingCost={handleShippingCost}
                           register={register}
-                          value={showingTranslateValue(
-                            storeCustomizationSetting?.checkout
-                              ?.shipping_name_two
-                          )}
+                          value={"Outside Dhaka"}
                           description={showingTranslateValue(
                             storeCustomizationSetting?.checkout
-                              ?.shipping_two_desc
+                              ?.shipping_one_desc
                           )}
-                          // time="7 Days"
+                          // time="Today"
                           cost={
                             Number(
                               storeCustomizationSetting?.checkout
-                                ?.shipping_two_cost
-                            ) || 20
+                                ?.shipping_one_cost
+                            ) || 120
                           }
                         />
+
                         <Error errorName={errors.shippingOption} />
-                      </div> */}
+                      </div>
                     </div>
                   </div>
                   <div className="form-group mt-12">
@@ -315,7 +228,7 @@ const Checkout = () => {
                     <div className="col-span-12 ">
                       <button
                         type="submit"
-                        disabled={isEmpty || !stripe || isCheckoutSubmit}
+                        disabled={isEmpty || isCheckoutSubmit}
                         className="bg-[#1E73BE]  border border-emerald-500 transition-all rounded py-3 text-center text-sm font-serif font-medium text-white flex justify-center w-full"
                       >
                         {isCheckoutSubmit ? (

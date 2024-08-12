@@ -8,6 +8,7 @@ const InputShipping = ({
   cost,
   currency,
   description,
+  defaultChacked,
   handleShippingCost,
 }) => {
   return (
@@ -37,7 +38,7 @@ const InputShipping = ({
               {...register(`shippingOption`, {
                 required: `Shipping Option is required!`,
               })}
-               defaultChecked
+              // checked={defaultChacked}
               name="shippingOption"
               type="radio"
               value={value}

@@ -7,6 +7,7 @@ import axios from "axios";
 import { notifyError, notifySuccess } from "@utils/toast";
 
 const useLoginSubmit = (phoneNumber) => {
+  
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const redirectUrl = useSearchParams().get("redirectUrl");
@@ -32,6 +33,7 @@ const useLoginSubmit = (phoneNumber) => {
   };
 
   const loginUser = async (phone, password) => {
+
     const result = await signIn("credentials", {
       redirect: false,
       phone,

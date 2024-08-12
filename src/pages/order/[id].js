@@ -22,6 +22,8 @@ const Order = ({ params }) => {
     OrderServices.getOrderById(orderId)
   );
 
+  console.log(data);
+
   const { showingTranslateValue, getNumberTwo, currency } = useUtilsFunction();
   const { storeCustomizationSetting, globalSetting } = useGetSetting();
 
@@ -55,6 +57,7 @@ const Order = ({ params }) => {
               currency={currency}
               globalSetting={globalSetting}
             />
+
             <div className="bg-white p-8 rounded-b-xl">
               <div className="flex lg:flex-row md:flex-row sm:flex-row flex-col justify-between invoice-btn">
                 <PDFDownloadLink
