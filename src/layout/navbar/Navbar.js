@@ -47,12 +47,9 @@ const Navbar = () => {
 
       <div className="  text-white bg-[#1E73BE] sticky top-0 z-30">
         <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
-          <div className="top-bar h-16 lg:h-auto flex items-center justify-between py-4 mx-auto">
-            <Link
-              href="/"
-              className="mr-3 lg:mr-12 xl:mr-12 hidden md:hidden lg:block"
-            >
-              <div className="relative w-32 h-10">
+          <div className="top-bar   flex flex-col lg:flex-row   items-center justify-between py-4 mx-auto">
+            <Link href="/" className="mr-3 lg:mr-12 xl:mr-12   lg:block">
+              <div className="relative w-32 h-10 ">
                 <Image
                   width="0"
                   height="0"
@@ -70,18 +67,19 @@ const Navbar = () => {
 
             <div className="w-full transition-all duration-200 ease-in-out lg:flex lg:max-w-[520px] xl:max-w-[750px] 2xl:max-w-[900px] md:mx-12 lg:mx-4 xl:mx-0">
               <div className="w-full flex flex-col justify-center flex-shrink-0 relative z-30">
-                <div className="flex flex-col mx-auto w-full   rounded-md">
+                <div className="flex flex-col mx-auto w-full    rounded-md">
                   <form
                     onSubmit={handleSubmit}
-                    className="relative pr-12 md:pr-14 bg-white overflow-hidden shadow-sm rounded-md w-full"
+                    className="relative pr-12   text-black md:pr-14 bg-white overflow-hidden shadow-sm rounded-md w-full"
                   >
                     <button
                       aria-label="Search"
                       type="submit"
-                      className="outline-none text-xl    text-white absolute top-0 right-0 end-0 w-12 md:w-14 h-full flex items-center justify-center transition duration-200 ease-in-out hover:text-heading focus:outline-none"
+                      className="outline-none text-xl     text-black absolute top-0 right-0 end-0 w-12 md:w-14 h-full flex items-center justify-center transition duration-200 ease-in-out hover:text-heading focus:outline-none"
                     >
                       <IoSearchOutline />
                     </button>
+
                     <label className="flex items-center py-0.5">
                       <input
                         onChange={(e) => setSearchText(e.target.value)}
@@ -132,18 +130,16 @@ const Navbar = () => {
                 )}
               </button>
 
-              <button
-                aria-label="Total"
-                className="relative px-5   xl:-top-2  top-0     text-white text-2xl "
-              >
-                <Link
-                  href={"/auth/signup"}
+              {!userInfo && (
+                <button
                   aria-label="Total"
-                  
+                  className="relative px-5   xl:-top-2  top-0     text-white text-2xl "
                 >
-                  <p className=" text-sm">Register</p>
-                </Link>
-              </button>
+                  <Link href={"/auth/signup"} aria-label="Total">
+                    <p className=" text-sm">Register</p>
+                  </Link>
+                </button>
+              )}
 
               <button
                 aria-label="Total"

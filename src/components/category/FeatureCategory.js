@@ -36,30 +36,32 @@ const FeatureCategory = () => {
       {loading ? (
         <CMSkeleton count={10} height={20} error={error} loading={loading} />
       ) : (
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6">
+        <ul className="grid grid-cols-4 lg:grid-cols-6 my-10 xl:grid-cols-6">
           {data[0]?.children?.map((category, i) => (
             <li className="group" key={i + 1}>
-              <div className="flex w-full h-full border border-gray-100 shadow-sm bg-white p-4 cursor-pointer transition duration-200 ease-linear transform group-hover:shadow-lg">
-                <div className="flex items-center">
+              <div className="flex w-full justify-center h-full   cursor-pointer transition duration-200 ease-linear transform ">
+                <div className="flex  flex-col  items-center ">
                   <div>
                     {category.icon ? (
                       <Image
                         src={category?.icon}
                         alt="category"
-                        width={35}
-                        height={35}
+                        width={50}
+                        height={50}
+                         className=" rounded-lg"
                       />
                     ) : (
                       <Image
                         src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
                         alt="category"
-                        width={35}
-                        height={35}
+                       
+                        width={50}
+                        height={50}
                       />
                     )}
                   </div>
 
-                  <div className="pl-4">
+                  <div className="">
                     <h3
                       onClick={() =>
                         handleCategoryClick(
@@ -67,11 +69,11 @@ const FeatureCategory = () => {
                           showingTranslateValue(category?.name)
                         )
                       }
-                      className="text-sm text-gray-600 font-serif font-medium leading-tight line-clamp-1  group-hover"
+                      className="text-sm text-gray-600 pt-1 font-serif font-medium leading-tight line-clamp-1  group-hover"
                     >
                       {showingTranslateValue(category?.name)}
                     </h3>
-                    <ul className="pt-1 mt-1">
+                    {/* <ul className="pt-1 mt-1">
                       {category?.children?.slice(0, 3).map((child) => (
                         <li key={child._id} className="pt-1">
                           <a
@@ -90,7 +92,7 @@ const FeatureCategory = () => {
                           </a>
                         </li>
                       ))}
-                    </ul>
+                    </ul> */}
                   </div>
                 </div>
               </div>

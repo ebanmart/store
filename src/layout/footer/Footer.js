@@ -416,6 +416,7 @@ const Footer = () => {
                 </div>
               )}
             </div>
+
             <div className="col-span-1 text-center hidden lg:block md:block">
               {storeCustomizationSetting?.footer?.bottom_contact_status && (
                 <div>
@@ -429,6 +430,7 @@ const Footer = () => {
                 </div>
               )}
             </div>
+
             {storeCustomizationSetting?.footer?.payment_method_status && (
               <div className="col-span-1 hidden lg:block md:block">
                 <ul className="lg:text-right">

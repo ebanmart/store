@@ -23,7 +23,7 @@ import Category from "@components/category/Category";
 import FlashSale from "@components/FlashSale";
 import NewArrival from "@components/NewArrival";
 import ComputerAccs from "@components/ComputerAccss";
-
+import MobileCategory from "@components/MobileCategory";
 import Image from "next/image";
 import Link from "next/link";
 import { IoMdArrowForward } from "react-icons/io";
@@ -178,14 +178,20 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                     <Category />
                   </div>
 
-                  <div className="flex-shrink-0  lg:block  z-10    w-full lg:w-[82%] ">
+                  <div className="flex-shrink-0  z-10    w-full lg:w-[82%] ">
                     <MainCarousel />
                   </div>
                 </div>
 
-                <div className=" rounded-lg mt-6">
+                <div className=" rounded-lg mt-2 lg:mt-6">
                   <Banner />
                 </div>
+
+                <div className=" block lg:hidden">
+                  <FeatureCategory />
+                </div>
+
+                {/* <MobileCategory /> */}
               </div>
             </div>
 
@@ -196,6 +202,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             {/* // all products */}
 
             {/* feature category's */}
+
             {/* {storeCustomizationSetting?.home?.featured_status && (
               <div className="bg-gray-100 lg:py-16 py-10">
                 <div className="mx-auto max-w-screen-2xl px-3 sm:px-10">

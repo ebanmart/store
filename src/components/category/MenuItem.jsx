@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 
 const MenuItem = ({ item, closeCategoryDrawer, mode }) => {
   const router = useRouter();
+
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -18,6 +19,7 @@ const MenuItem = ({ item, closeCategoryDrawer, mode }) => {
   const handleCategory = () => {
     if (mode === "mobile") {
       closeCategoryDrawer();
+      router.push(`/search?category=${item?.name?.en}&_id=${item?._id}`);
     } else {
       router.push(`/search?category=${item?.name?.en}&_id=${item?._id}`);
     }
@@ -28,7 +30,7 @@ const MenuItem = ({ item, closeCategoryDrawer, mode }) => {
       onClick={() => {
         handleCategory();
       }}
-      className="relative flex justify-between items-center cursor-pointer py-1 px-2 my-2 rounded-md text-[#6b7280] text-sm hover:bg-[#f0fdf4] text-center"
+      className="relative flex justify-between items-center cursor-pointer py-2 px-2 my-2 rounded-md text-[#6b7280] text-sm hover:bg-[#f0fdf4] text-center"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -41,16 +43,21 @@ const MenuItem = ({ item, closeCategoryDrawer, mode }) => {
         />
         <span className="block">{item?.name?.en}</span>
       </div>
+
       <SlArrowRight className="text-[#1E73BE]" />
 
+      {mode != "mobile"
+        ? item?.children &&
+          isHovered && (
+            <ul className="absolute left-full top-0 py-4    w-full bg-white border rounded-md shadow-lg">
+              {item.children.map((child, index) => (
+                <MenuItemNested key={index} child={child} />
+              ))}
+            </ul>
+          )
+        : ""}
+
       {/* Render child menu if hovered and has children */}
-      {item?.children && isHovered && (
-        <ul className="absolute left-full top-0 py-2    w-full bg-white border rounded-md shadow-lg">
-          {item.children.map((child, index) => (
-            <MenuItemNested key={index} child={child} />
-          ))}
-        </ul>
-      )}
       {/* End Child Menu */}
     </li>
   );

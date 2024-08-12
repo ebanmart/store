@@ -12,7 +12,7 @@ import CategoryCard from "@components/category/CategoryCard";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import MenuItem from "./MenuItem";
 
-const Category = ({ sidebar, closeCategoryDrawer , mode}) => {
+const Category = ({ sidebar, closeCategoryDrawer, mode }) => {
   const { showingTranslateValue } = useUtilsFunction();
 
   const { data, loading, error } = useAsync(() =>
@@ -23,9 +23,18 @@ const Category = ({ sidebar, closeCategoryDrawer , mode}) => {
     <div className={`{ group h-full ${sidebar ? "w-full" : "w-[240px]"}`}>
       <div className="bg-white h-full  transition duration-150 ease-linear transform   ">
         <menu>
-          <ul className="w-full p-2 min-h-full border rounded-md group relative">
+          <ul
+            className={`w-full p-2 min-h-full ${
+              mode != "mobile" ? "border" : ""
+            } rounded-md group relative`}
+          >
             {data?.[0]?.children?.map((item, key) => (
-              <MenuItem mode={mode} item={item} key={key} closeCategoryDrawer={closeCategoryDrawer} />
+              <MenuItem
+                mode={mode}
+                item={item}
+                key={key}
+                closeCategoryDrawer={closeCategoryDrawer}
+              />
             ))}
           </ul>
         </menu>
