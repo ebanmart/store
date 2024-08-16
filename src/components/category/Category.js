@@ -24,9 +24,8 @@ const Category = ({ sidebar, closeCategoryDrawer, mode }) => {
       <div className="bg-white h-full  transition duration-150 ease-linear transform   ">
         <menu>
           <ul
-            className={`w-full p-2 min-h-full ${
-              mode != "mobile" ? "border" : ""
-            } rounded-md group relative`}
+            className={`w-full    p-2 min-h-full ${mode != "mobile" ? "border" : ""
+              } rounded-md group relative`}
           >
             {data?.[0]?.children?.map((item, key) => (
               <MenuItem

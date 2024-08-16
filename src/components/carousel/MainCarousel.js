@@ -103,20 +103,91 @@ const MainCarousel = () => {
 
   return (
     <>
-      <div
-        className="h-full relative w-full rounded-lg overflow-hidden"
+      <div className="h-full relative w-full rounded-lg overflow-hidden">
+        <Swiper
+          spaceBetween={0}
+          centeredSlides={true}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          pagination={
+            (storeCustomizationSetting?.slider?.bottom_dots ||
+              storeCustomizationSetting?.slider?.both_slider) && {
+              clickable: true,
+            }
+          }
+          navigation={
+            (storeCustomizationSetting?.slider?.left_right_arrow ||
+              storeCustomizationSetting?.slider?.both_slider) && {
+              clickable: true,
+            }
+          }
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper"
+        >
+          <SwiperSlide className="h-full relative w-full rounded-lg overflow-hidden">
+            <div className="text-sm min-w-full text-gray-600 hover:text-emerald-dark">
+              <Image
+                width={1500}
+                height={200}
+                src={
+                  "https://bponi.sgp1.cdn.digitaloceanspaces.com/bponi/file/9afe66c8-c3a9-4813-aad8-150275031c6f.jpg"
+                }
+                alt={"banner"}
+                className="object-cover"
+                priority
+              />
+            </div>
+          </SwiperSlide>
         
-      >
-        <div className="text-sm max-h-[180px] min-w-full text-gray-600 hover:text-emerald-dark">
-          <Image
-            width={1500}
-            height={200}
-            src={"https://bponi.sgp1.cdn.digitaloceanspaces.com/bponi/file/9afe66c8-c3a9-4813-aad8-150275031c6f.jpg"}
-            alt={sliderData[0]?.title}
-            className="object-cover"
-            priority
-          />
-        </div>
+          <SwiperSlide className="h-full relative w-full rounded-lg overflow-hidden">
+            <div className="text-sm min-w-full text-gray-600 hover:text-emerald-dark">
+              <Image
+                width={1500}
+                height={200}
+                src={"/banner/free-delivery.jpg"}
+                alt={"banner"}
+                className="object-cover"
+                priority
+              />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="h-full relative w-full rounded-lg overflow-hidden">
+            <div className="text-sm min-w-full text-gray-600 hover:text-emerald-dark">
+              <Image
+                width={1500}
+                height={200}
+                src={"/banner/pro-quality.jpg"}
+                alt={"banner"}
+                className="object-cover"
+                priority
+              />
+            </div>
+          </SwiperSlide>
+
+          {/* {sliderData?.map((item, i) => (
+            <SwiperSlide
+              className="h-full relative w-full rounded-lg overflow-hidden"
+              key={i + 1}
+            >
+              <div className="text-sm min-w-full text-gray-600 hover:text-emerald-dark">
+                <Image
+                  width={1500}
+                  height={200}
+                  src={
+                    "https://bponi.sgp1.cdn.digitaloceanspaces.com/bponi/file/9afe66c8-c3a9-4813-aad8-150275031c6f.jpg"
+                  }
+                  alt={sliderData[0]?.title}
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </SwiperSlide>
+          ))} */}
+        </Swiper>
+
         {/* <div className="absolute top-0 left-0 z-10 p-r-16 flex-col flex w-full h-full place-items-start justify-center">
           <div className="pl-4 pr-12 sm:pl-10 sm:pr-16 w-10/12 lg:w-8/12 xl:w-7/12">
             <h1 className="mb-2 font-serif text-xl sm:text-lg md:text-2xl line-clamp-1 md:line-clamp-none  lg:line-clamp-none  lg:text-3xl font-bold text-gray-800">
@@ -134,8 +205,8 @@ const MainCarousel = () => {
           </div>
         </div> */}
       </div>
-
-      {/* <Swiper
+      {/* 
+      <Swiper
         spaceBetween={0}
         centeredSlides={true}
         autoplay={{

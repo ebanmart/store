@@ -12,6 +12,7 @@ import { SidebarContext } from "@context/SidebarContext";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 
 const FeatureCategory = () => {
+
   const router = useRouter();
   const { isLoading, setIsLoading } = useContext(SidebarContext);
   const { showingTranslateValue } = useUtilsFunction();
@@ -36,27 +37,27 @@ const FeatureCategory = () => {
       {loading ? (
         <CMSkeleton count={10} height={20} error={error} loading={loading} />
       ) : (
-        <ul className="grid grid-cols-4 lg:grid-cols-6 my-10 xl:grid-cols-6">
+        <ul className="grid grid-cols-4 gap-y-5 lg:grid-cols-6  xl:grid-cols-6">
           {data[0]?.children?.map((category, i) => (
             <li className="group" key={i + 1}>
               <div className="flex w-full justify-center h-full   cursor-pointer transition duration-200 ease-linear transform ">
-                <div className="flex  flex-col  items-center ">
+                <div className="flex  flex-col items-center ">
                   <div>
                     {category.icon ? (
                       <Image
                         src={category?.icon}
                         alt="category"
-                        width={50}
-                        height={50}
-                         className=" rounded-lg"
+                        width={47}
+                        height={47}
+                        className=" rounded-lg"
                       />
                     ) : (
                       <Image
                         src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
                         alt="category"
-                       
-                        width={50}
-                        height={50}
+
+                        width={47}
+                        height={47}
                       />
                     )}
                   </div>
@@ -69,7 +70,7 @@ const FeatureCategory = () => {
                           showingTranslateValue(category?.name)
                         )
                       }
-                      className="text-sm text-gray-600 pt-1 font-serif font-medium leading-tight line-clamp-1  group-hover"
+                      className=" text-xs text-gray-600 pt-2 font-serif font-medium leading-tight line-clamp-1  group-hover"
                     >
                       {showingTranslateValue(category?.name)}
                     </h3>

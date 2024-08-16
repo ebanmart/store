@@ -57,73 +57,101 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
     baseURL: `${process.env.NEXT_PUBLIC_API_BASE_URL}`, // Replace with your API base URL
   });
 
-  const [data, setData] = useState(null);
-  const [BabyKids, SetBabyKids] = useState(null);
-  const [Cellphones, SetCellphones] = useState(null);
-  const [WomenFashion, setWomenFashion] = useState(null);
-  const [ComputerAccss, setComputerAccss] = useState(null);
+  const [cellphones, setCellphones] = useState([]);
+  const [computerAccs, setComputerAccs] = useState([]);
+  const [womenFashion, setWomenFashion] = useState([]);
+  const [beauty, setBeauty] = useState([]);
+  const [kitchen, setKitchen] = useState([]);
+  const [menFashion, setMenFashion] = useState([]);
 
-  // =============================
-  const fetchSetBabyKids = async () => {
+  // Fetching cellphones
+  const fetchCellphones = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=66ae3aa55115504c74674a65&title=&slug=&count=6"
+        "/products/store?category=66bcbcbdf1b80e0f752b53ba&title=&slug=&count=6"
       );
-
-      SetBabyKids(response.data.products);
+      setCellphones(response.data.products);
     } catch (error) {
-      console.error("Error fetching products:", error);
-      throw error;
+      console.error("Error fetching cellphones:", error);
+      // Handle error appropriately
     }
   };
 
-  const CellPhone = async () => {
+  // Fetching computer accessories
+  const fetchComputerAccs = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=66ae3b235115504c74674a9b&title=&slug=&count=6"
+        "/products/store?category=66bcb80ef1b80e0f752b5265&title=&slug=&count=6"
       );
-
-      SetCellphones(response.data.products);
+      setComputerAccs(response.data.products);
     } catch (error) {
-      console.error("Error fetching products:", error);
-      throw error;
+      console.error("Error fetching computer accessories:", error);
+      // Handle error appropriately
     }
   };
 
-  const comaccss = async () => {
+  // Fetching women fashion
+  const fetchWomenFashion = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=66ae3b235115504c74674a9b&title=&slug=&count=6"
+        "/products/store?category=66bc9552f1b80e0f752b4c06"
       );
-
-      setComputerAccss(response.data.products);
+      setWomenFashion(response.data.products);
     } catch (error) {
-      console.error("Error fetching products:", error);
-      throw error;
+      console.error("Error fetching women fashion:", error);
+      // Handle error appropriately
     }
   };
 
-  // Function to fetch FishMore items
-  const fatchSeaFishWomenFashion = async () => {
+  // Fetching beauty products
+  const fetchBeauty = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=66ae3aec5115504c74674a7f"
+        "/products/store?category=66bc9c15f1b80e0f752b4eae"
       );
-
-      setWomenFashion(response?.data?.products);
+      setBeauty(response.data.products);
     } catch (error) {
-      console.error("Error fetching FishMore items:", error);
-      throw error;
+      console.error("Error fetching beauty products:", error);
+      // Handle error appropriately
     }
   };
 
-  // =============================
+  // Fetching kitchen items
+  const fetchKitchen = async () => {
+    try {
+      const response = await api.get(
+        "/products/store?category=66bc9733f1b80e0f752b4d20"
+      );
+      setKitchen(response.data.products);
+    } catch (error) {
+      console.error("Error fetching kitchen items:", error);
+      // Handle error appropriately
+    }
+  };
+
+  // Fetching men fashion
+  const fetchMenFashion = async () => {
+    try {
+      const response = await api.get(
+        "/products/store?category=66bc919ff1b80e0f752b49d9"
+      );
+      setMenFashion(response.data.products);
+    } catch (error) {
+      console.error("Error fetching men fashion:", error);
+      // Handle error appropriately
+    }
+  };
+
+  // Fetching all categories when the component mounts
   useEffect(() => {
-    fatchSeaFishWomenFashion();
-    CellPhone();
-    fetchSetBabyKids();
-    comaccss();
+    fetchCellphones();
+    fetchComputerAccs();
+    fetchWomenFashion();
+    fetchBeauty();
+    fetchKitchen();
+    fetchMenFashion();
   }, []);
+
 
   const router = useRouter();
   const { isLoading, setIsLoading } = useContext(SidebarContext);
@@ -183,7 +211,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
                   </div>
                 </div>
 
-                <div className=" rounded-lg mt-2 lg:mt-6">
+                <div className=" rounded-lg   mt-1 lg:mt-6">
                   <Banner />
                 </div>
 
@@ -195,9 +223,12 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
               </div>
             </div>
 
-            {WomenFashion && <NewArrival data={WomenFashion} />}
-            {fetchSetBabyKids && <BabyKidss data={BabyKids} />}
-            {ComputerAccss && <ComputerAccs data={ComputerAccss} />}
+            {cellphones && <NewArrival data={cellphones} />}
+            {computerAccs && <NewArrival data={computerAccs} />}
+            {womenFashion && <NewArrival data={womenFashion} />}
+            {beauty && <NewArrival data={beauty} />}
+            {kitchen && <NewArrival data={kitchen} />}
+            {menFashion && <NewArrival data={menFashion} />}
 
             {/* // all products */}
 
