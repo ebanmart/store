@@ -5,7 +5,6 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useCart } from "react-use-cart";
 import useRazorpay from "react-razorpay";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 //internal import
 import useAsync from "./useAsync";
@@ -33,15 +32,10 @@ const useCheckoutSubmit = (storeSetting) => {
   const [isCouponAvailable, setIsCouponAvailable] = useState(false);
 
   const router = useRouter();
-
   const couponRef = useRef("");
-
   const [Razorpay] = useRazorpay();
-
   const { isEmpty, emptyCart, items, cartTotal } = useCart();
-
   const userInfo = getUserSession();
-
   const { data, loading } = useAsync(() =>
     CustomerServices.getShippingAddress({
       userId: userInfo?.id,

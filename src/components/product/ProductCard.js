@@ -73,7 +73,7 @@ const ProductCard = ({ product, attributes }) => {
 
 
           <div className="w-full flex justify-between">
-            <Stock product={product} stock={product.stock} card />
+            {/* <Stock product={product} stock={product.stock} card /> */}
             <Discount product={product} />
           </div>
 
