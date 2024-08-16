@@ -71,7 +71,7 @@ const ProductCard = ({ product, attributes }) => {
         <div className="group box-border overflow-hidden flex  shadow-sm pe-0 flex-col items-center p-3 rounded-lg w-[15rem] bg-[#F1F5F9] relative">
 
 
-
+{/* //////// */}
           <div className="w-full flex justify-between">
             {/* <Stock product={product} stock={product.stock} card /> */}
             <Discount product={product} />
