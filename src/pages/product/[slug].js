@@ -36,13 +36,12 @@ import Discount from "@components/common/Discount";
 import ImageCarousel from "@components/carousel/ImageCarousel";
 
 const ProductScreen = ({ product, attributes, relatedProducts }) => {
-  const router = useRouter();
 
+  const router = useRouter();
   const { lang, showingTranslateValue, getNumber, currency } =
     useUtilsFunction();
 
   // console.log('product',product)
-
   const { isLoading, setIsLoading } = useContext(SidebarContext);
   const { handleAddItem, item, setItem } = useAddToCart();
 

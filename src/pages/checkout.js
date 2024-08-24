@@ -349,6 +349,8 @@ const Checkout = () => {
                     {cartTotal?.toFixed(2)}
                   </span>
                 </div>
+
+
                 <div className="flex items-center py-2 text-sm w-full font-semibold text-gray-500 last:border-b-0 last:text-base last:pb-0">
                   Delivery Charge
                   {/* {showingTranslateValue(
@@ -359,6 +361,8 @@ const Checkout = () => {
                     {shippingCost?.toFixed(2)}
                   </span>
                 </div>
+
+
                 <div className="flex items-center py-2 text-sm w-full font-semibold text-gray-500 last:border-b-0 last:text-base last:pb-0">
                   Discount
                   {/* {showingTranslateValue(
@@ -369,6 +373,8 @@ const Checkout = () => {
                     {discountAmount.toFixed(2)}
                   </span>
                 </div>
+
+
                 <div className="border-t mt-4">
                   <div className="flex items-center font-bold font-serif justify-between pt-5 text-sm uppercase">
                     Total Cost
@@ -381,6 +387,8 @@ const Checkout = () => {
                     </span>
                   </div>
                 </div>
+
+                
               </div>
             </div>
           </div>

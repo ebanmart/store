@@ -29,13 +29,13 @@ const Search = ({ products, attributes }) => {
 
   return (
     <Layout title="Search" description="This is search page">
-      <div className="mx-auto max-w-screen-2xl space-x-4  py-4 flex px-3 sm:px-10">
+      <div className="mx-auto max-w-screen-2xl  lg:space-x-16  py-4 flex px-3 sm:px-10  ">
         <div className="   w-[17%]  rounded-md sticky hidden lg:block min-h-full z-20">
           <Category />
         </div>
 
         <div className="flex  w-full lg:w-[83%]  items-center  z-10">
-          <div className="flex w-full ">
+         
             <div className="w-full">
               {productData?.length === 0 ? (
                 <div className="mx-auto ">
@@ -57,6 +57,7 @@ const Search = ({ products, attributes }) => {
                     <span className="font-bold">{productData?.length}</span>{" "}
                     {t("common:itemsFound")}
                   </h6>
+
                   <span className="text-sm font-serif">
                     <select
                       onChange={(e) => setSortedField(e.target.value)}
@@ -73,6 +74,7 @@ const Search = ({ products, attributes }) => {
                       </option>
                     </select>
                   </span>
+
                 </div>
               )}
 
@@ -80,7 +82,17 @@ const Search = ({ products, attributes }) => {
                 <Loading loading={isLoading} />
               ) : (
                 <>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-6 gap-2 md:gap-3 lg:gap-3">
+                  <div
+                    className="grid grid-cols-2  
+                  
+                      
+                        gap-5
+                        
+                         lg:gap-x-[16rem]
+                         
+                  
+                  lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-6      "
+                  >
                     {productData?.slice(0, visibleProduct).map((product, i) => (
                       <ProductCard
                         key={i + 1}
@@ -101,7 +113,7 @@ const Search = ({ products, attributes }) => {
                 </>
               )}
             </div>
-          </div>
+       
         </div>
       </div>
     </Layout>

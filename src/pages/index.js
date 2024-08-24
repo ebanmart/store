@@ -63,6 +63,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
   const [beauty, setBeauty] = useState([]);
   const [kitchen, setKitchen] = useState([]);
   const [menFashion, setMenFashion] = useState([]);
+  const [eAccessoris, setAccessoris] = useState([]);
 
   // Fetching cellphones
   const fetchCellphones = async () => {
@@ -94,7 +95,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
   const fetchWomenFashion = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=66bc9552f1b80e0f752b4c06"
+        "/products/store?category=66bc9e31f1b80e0f752b5038"
       );
       setWomenFashion(response.data.products);
     } catch (error) {
@@ -142,6 +143,19 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
     }
   };
 
+  // Fetching men fashion
+  const electronicAccessorise = async () => {
+    try {
+      const response = await api.get(
+        "/products/store?category=66bcb537f1b80e0f752b517c"
+      );
+      setAccessoris(response.data.products);
+    } catch (error) {
+      console.error("Error fetching men fashion:", error);
+      // Handle error appropriately
+    }
+  };
+
   // Fetching all categories when the component mounts
   useEffect(() => {
     fetchCellphones();
@@ -150,8 +164,8 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
     fetchBeauty();
     fetchKitchen();
     fetchMenFashion();
+    electronicAccessorise();
   }, []);
-
 
   const router = useRouter();
   const { isLoading, setIsLoading } = useContext(SidebarContext);
@@ -223,12 +237,14 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
               </div>
             </div>
 
-            {cellphones && <NewArrival data={cellphones} />}
-            {computerAccs && <NewArrival data={computerAccs} />}
-            {womenFashion && <NewArrival data={womenFashion} />}
-            {beauty && <NewArrival data={beauty} />}
+            {eAccessoris && <NewArrival data={eAccessoris} />}
             {kitchen && <NewArrival data={kitchen} />}
-            {menFashion && <NewArrival data={menFashion} />}
+            {womenFashion && <NewArrival data={womenFashion} />}
+            {/* {cellphones && <NewArrival data={cellphones} />} */}
+            {/* {computerAccs && <NewArrival data={computerAccs} />} */}
+            {/* {beauty && <NewArrival data={beauty} />} */}
+            {/* {menFashion && <NewArrival data={menFashion} />} */}
+          
 
             {/* // all products */}
 

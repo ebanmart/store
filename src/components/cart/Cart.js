@@ -24,9 +24,10 @@ const Cart = ({ sidebar }) => {
     } else {
       if (!userInfo) {
         // console.log("userInfo::", userInfo, "history");
+        router.push("/checkout");
 
         // Redirect to login page with returnUrl query parameter
-        router.push(`/auth/login?redirectUrl=checkout`);
+        // router.push(`/auth/login?redirectUrl=checkout`);
         closeCartDrawer();
       } else {
         router.push("/checkout");

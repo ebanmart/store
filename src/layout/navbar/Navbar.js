@@ -96,7 +96,7 @@ const Navbar = () => {
             <div className="hidden md:hidden md:items-center  lg:flex  xl:block absolute inset-y-0 right-0 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               {/* Profile dropdown */}
 
-              <button
+              {/* <button
                 className="pl-5 text-[#565E6C]text-2xl   border-r  pr-4 "
                 aria-label="Login"
               >
@@ -128,9 +128,9 @@ const Navbar = () => {
                     </div>
                   </Link>
                 )}
-              </button>
+              </button> */}
 
-              {!userInfo && (
+              {/* {!userInfo && (
                 <button
                   aria-label="Total"
                   className="relative px-5   xl:-top-2  top-0     text-white text-2xl "
@@ -139,7 +139,7 @@ const Navbar = () => {
                     <p className=" text-sm">Register</p>
                   </Link>
                 </button>
-              )}
+              )} */}
 
               <button
                 aria-label="Total"

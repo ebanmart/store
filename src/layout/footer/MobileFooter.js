@@ -49,7 +49,7 @@ const MobileFooter = () => {
           </span>
           <FiShoppingCart className="w-6 h-6 drop-shadow-xl" />
         </button>
-        <button
+        {/* <button
           aria-label="User"
           type="button"
           className="text-xl text-white indicator justify-center"
@@ -76,7 +76,7 @@ const MobileFooter = () => {
               <FiUser className="w-6 h-6 drop-shadow-xl" />
             </Link>
           )}
-        </button>
+        </button> */}
       </footer>
     </>
   );

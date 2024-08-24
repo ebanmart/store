@@ -12,7 +12,6 @@ import { SidebarContext } from "@context/SidebarContext";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 
 const FeatureCategory = () => {
-
   const router = useRouter();
   const { isLoading, setIsLoading } = useContext(SidebarContext);
   const { showingTranslateValue } = useUtilsFunction();
@@ -41,7 +40,15 @@ const FeatureCategory = () => {
           {data[0]?.children?.map((category, i) => (
             <li className="group" key={i + 1}>
               <div className="flex w-full justify-center h-full   cursor-pointer transition duration-200 ease-linear transform ">
-                <div className="flex  flex-col items-center ">
+                <div
+                  onClick={() =>
+                    handleCategoryClick(
+                      category._id,
+                      showingTranslateValue(category?.name)
+                    )
+                  }
+                  className="flex  flex-col items-center  "
+                >
                   <div>
                     {category.icon ? (
                       <Image
@@ -55,7 +62,6 @@ const FeatureCategory = () => {
                       <Image
                         src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
                         alt="category"
-
                         width={47}
                         height={47}
                       />
@@ -63,15 +69,7 @@ const FeatureCategory = () => {
                   </div>
 
                   <div className="">
-                    <h3
-                      onClick={() =>
-                        handleCategoryClick(
-                          category._id,
-                          showingTranslateValue(category?.name)
-                        )
-                      }
-                      className=" text-xs text-gray-600 pt-2 font-serif font-medium leading-tight line-clamp-1  group-hover"
-                    >
+                    <h3 className=" text-xs text-gray-600 pt-2 font-serif font-medium leading-tight line-clamp-1  group-hover">
                       {showingTranslateValue(category?.name)}
                     </h3>
                     {/* <ul className="pt-1 mt-1">

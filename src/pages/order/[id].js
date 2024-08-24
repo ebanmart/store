@@ -22,7 +22,7 @@ const Order = ({ params }) => {
     OrderServices.getOrderById(orderId)
   );
 
-  console.log(data);
+ 
 
   const { showingTranslateValue, getNumberTwo, currency } = useUtilsFunction();
   const { storeCustomizationSetting, globalSetting } = useGetSetting();

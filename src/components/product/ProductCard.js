@@ -67,16 +67,12 @@ const ProductCard = ({ product, attributes }) => {
       )} */}
 
       <Link href={`/product/${product.slug}`} passHref>
-
-        <div className="group box-border overflow-hidden flex  shadow-sm pe-0 flex-col items-center p-3 rounded-lg w-[15rem] bg-[#F1F5F9] relative">
-
-
-{/* //////// */}
+        <div className="group box-border overflow-hidden flex  shadow-sm pe-0 flex-col items-center  rounded-lg  w-[12rem] lg:w-[15rem] bg-[#F1F5F9] relative">
+          {/* //////// */}
           <div className="w-full flex justify-between">
             {/* <Stock product={product} stock={product.stock} card /> */}
             <Discount product={product} />
           </div>
-
 
           <div className="relative flex justify-center cursor-pointer pt-2 w-full h-44">
             <div className="relative w-full h-full p-2">
@@ -96,7 +92,6 @@ const ProductCard = ({ product, attributes }) => {
               )}
             </div>
           </div>
-
 
           <div className="w-full px-3 lg:px-4 pb-4 overflow-hidden">
             <div className="relative mb-1">
@@ -165,18 +160,16 @@ const ProductCard = ({ product, attributes }) => {
                 </div>
               ) : (
                 <button
-                  onClick={() => handleAddItem(product)}
+                  // onClick={() => handleAddItem(product)}
                   aria-label="cart"
                   className=" w-full  text-white p-2 self-center flex items-center justify-center border border-gray-200 rounded  hover:border-[#1E73BE] bg-[#1E73BE] hover:text-white transition-all"
                 >
                   {" "}
-                  <span className="text-sm">Add to Cart</span>{" "}
+                  <span className="text-sm">Buy Now</span>{" "}
                 </button>
               )}
             </div>
           </div>
-
-
         </div>
       </Link>
     </>
