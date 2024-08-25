@@ -49,13 +49,13 @@ const MobileFooter = () => {
           </span>
           <FiShoppingCart className="w-6 h-6 drop-shadow-xl" />
         </button>
-        {/* <button
+        <button
           aria-label="User"
           type="button"
           className="text-xl text-white indicator justify-center"
         >
           {userInfo?.image ? (
-            <Link href="/user/dashboard" className="relative top-1 w-6 h-6">
+            <Link href="#" className="relative top-1 w-6 h-6">
               <Image
                 width={29}
                 height={29}
@@ -66,17 +66,17 @@ const MobileFooter = () => {
             </Link>
           ) : userInfo?.name ? (
             <Link
-              href="/user/dashboard"
+              href="#"
               className="leading-none font-bold font-serif block"
             >
               {userInfo?.name[0]}
             </Link>
           ) : (
-            <Link href="/auth/login">
+            <Link href="#">
               <FiUser className="w-6 h-6 drop-shadow-xl" />
             </Link>
           )}
-        </button> */}
+        </button>
       </footer>
     </>
   );

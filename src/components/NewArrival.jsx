@@ -46,8 +46,12 @@ function NewArrival({ data }) {
           md:px-5 
           
      gap-x-5
+   
+
+  items-center 
+    justify-items-center
         
-        gap-y-5  xl:gap-x-[10rem]  grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6"
+        gap-y-5  lg:gap-y-[3rem]  lg:gap-x-[2rem]  grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
         >
           {data && data?.map((data) => <ProductCard product={data} />)}
         </div>

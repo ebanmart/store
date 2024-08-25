@@ -36,7 +36,6 @@ import Discount from "@components/common/Discount";
 import ImageCarousel from "@components/carousel/ImageCarousel";
 
 const ProductScreen = ({ product, attributes, relatedProducts }) => {
-
   const router = useRouter();
   const { lang, showingTranslateValue, getNumber, currency } =
     useUtilsFunction();
@@ -216,6 +215,60 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
     }
   };
 
+  const handleBuyNow = (p) => {
+    if (p.variants.length === 1 && p.variants[0].quantity < 1)
+      return notifyError("Insufficient stock");
+    // if (notAvailable) return notifyError('This Variation Not Available Now!');
+    if (stock <= 0) return notifyError("Insufficient stock");
+    // console.log('selectVariant', selectVariant);
+
+    if (
+      product?.variants.map(
+        (variant) =>
+          Object.entries(variant).sort().toString() ===
+          Object.entries(selectVariant).sort().toString()
+      )
+    ) {
+      const { variants, categories, description, ...updatedProduct } = product;
+      const newItem = {
+        ...updatedProduct,
+        id: `${
+          p.variants.length <= 1
+            ? p._id
+            : p._id +
+              variantTitle
+                ?.map(
+                  // (att) => selectVariant[att.title.replace(/[^a-zA-Z0-9]/g, '')]
+                  (att) => selectVariant[att._id]
+                )
+                .join("-")
+        }`,
+
+        title: `${
+          p.variants.length <= 1
+            ? showingTranslateValue(product?.title)
+            : showingTranslateValue(product?.title) +
+              "-" +
+              variantTitle
+                ?.map(
+                  // (att) => selectVariant[att.title.replace(/[^a-zA-Z0-9]/g, '')]
+                  (att) =>
+                    att.variants?.find((v) => v._id === selectVariant[att._id])
+                )
+                .map((el) => showingTranslateValue(el?.name))
+        }`,
+        image: img,
+        variant: selectVariant,
+        price: price,
+        originalPrice: originalPrice,
+      };
+      router.push("/checkout");
+      handleAddItem(newItem);
+    } else {
+      return notifyError("Please select all variant first!");
+    }
+  };
+
   const handleChangeImage = (img) => {
     setImg(img);
   };
@@ -309,17 +362,17 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                           <h1 className="leading-7 text-lg md:text-xl lg:text-2xl mb-1 font-semibold font-serif text-gray-800">
                             {showingTranslateValue(product?.title)}
                           </h1>
-
+                          {/* 
                           <p className="uppercase font-serif font-medium text-gray-500 text-sm">
                             SKU :{" "}
                             <span className="font-bold text-gray-600">
                               {product.sku}
                             </span>
-                          </p>
+                          </p> */}
 
-                          <div className="relative">
+                          {/* <div className="relative">
                             <Stock stock={stock} />
-                          </div>
+                          </div> */}
                         </div>
                         <Price
                           price={price}
@@ -407,6 +460,13 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                   </span>
                                 </button>
                               </div>
+
+                              <button
+                                onClick={() => handleBuyNow(product)}
+                                className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-[#1E73BE]  w-full h-12"
+                              >
+                                {"Buy Now"}
+                              </button>
                               <button
                                 onClick={() => handleAddToCart(product)}
                                 className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-[#1E73BE]  w-full h-12"

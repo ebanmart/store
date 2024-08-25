@@ -29,91 +29,76 @@ const Search = ({ products, attributes }) => {
 
   return (
     <Layout title="Search" description="This is search page">
-      <div className="mx-auto max-w-screen-2xl  lg:space-x-16  py-4 flex px-3 sm:px-10  ">
+      <div className="  flex justify-center container mx-auto py-5 md:space-x-20 xl:space-0-0">
         <div className="   w-[17%]  rounded-md sticky hidden lg:block min-h-full z-20">
           <Category />
         </div>
 
-        <div className="flex  w-full lg:w-[83%]  items-center  z-10">
-         
-            <div className="w-full">
-              {productData?.length === 0 ? (
-                <div className="mx-auto ">
-                  <Image
-                    className="my-4 mx-auto"
-                    src="/no-result.svg"
-                    alt="no-result"
-                    width={400}
-                    height={380}
-                  />
-                  <h2 className="text-lg md:text-xl lg:text-2xl xl:text-2xl text-center mt-2 font-medium font-serif text-gray-600">
-                    {t("common:sorryText")} 😞
-                  </h2>
-                </div>
-              ) : (
-                <div className="flex justify-between   mb-3 bg-orange-100 border border-gray-100 rounded p-3">
-                  <h6 className="text-sm font-serif">
-                    {t("common:totalI")}{" "}
-                    <span className="font-bold">{productData?.length}</span>{" "}
-                    {t("common:itemsFound")}
-                  </h6>
-
-                  <span className="text-sm font-serif">
-                    <select
-                      onChange={(e) => setSortedField(e.target.value)}
-                      className="py-0 text-sm font-serif font-medium block w-full rounded border-0 bg-white pr-10 cursor-pointer focus:ring-0"
-                    >
-                      <option className="px-3" value="All" defaultValue hidden>
-                        {t("common:sortByPrice")}
-                      </option>
-                      <option className="px-3" value="Low">
-                        {t("common:lowToHigh")}
-                      </option>
-                      <option className="px-3" value="High">
-                        {t("common:highToLow")}
-                      </option>
-                    </select>
-                  </span>
-
-                </div>
-              )}
-
-              {isLoading ? (
-                <Loading loading={isLoading} />
-              ) : (
-                <>
-                  <div
-                    className="grid grid-cols-2  
-                  
-                      
-                        gap-5
-                        
-                         lg:gap-x-[16rem]
-                         
-                  
-                  lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-6      "
-                  >
-                    {productData?.slice(0, visibleProduct).map((product, i) => (
-                      <ProductCard
-                        key={i + 1}
-                        product={product}
-                        attributes={attributes}
-                      />
-                    ))}
-                  </div>
-
-                  {productData?.length > visibleProduct && (
-                    <button
-                      onClick={() => setVisibleProduct((pre) => pre + 10)}
-                      className="w-auto mx-auto md:text-sm leading-5 flex items-center transition ease-in-out duration-300 font-medium text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none   bg-[#1E73BE]  text-white md:px-6 lg:px-8 py-2 md:py-3 lg:py-3 hover:text-white   px-12 mt-6 text-sm lg:text-sm"
-                    >
-                      More
-                    </button>
-                  )}
-                </>
-              )}
+        <div className=" overflow-hidden  w-full lg:w-[83%]  items-center  z-10">
+          {productData?.length === 0 ? (
+            <div className="mx-auto ">
+              <Image
+                className="my-4 mx-auto"
+                src="/no-result.svg"
+                alt="no-result"
+                width={400}
+                height={380}
+              />
+              <h2 className="text-lg md:text-xl lg:text-2xl xl:text-2xl text-center mt-2 font-medium font-serif text-gray-600">
+                {t("common:sorryText")} 😞
+              </h2>
             </div>
-       
+          ) : (
+            <div className="flex justify-between   mb-3 bg-orange-100 border border-gray-100 rounded p-3">
+              <h6 className="text-sm font-serif">
+                {t("common:totalI")}{" "}
+                <span className="font-bold">{productData?.length}</span>{" "}
+                {t("common:itemsFound")}
+              </h6>
+
+              <span className="text-sm font-serif">
+                <select
+                  onChange={(e) => setSortedField(e.target.value)}
+                  className="py-0 text-sm font-serif font-medium block w-full rounded border-0 bg-white pr-10 cursor-pointer focus:ring-0"
+                >
+                  <option className="px-3" value="All" defaultValue hidden>
+                    {t("common:sortByPrice")}
+                  </option>
+                  <option className="px-3" value="Low">
+                    {t("common:lowToHigh")}
+                  </option>
+                  <option className="px-3" value="High">
+                    {t("common:highToLow")}
+                  </option>
+                </select>
+              </span>
+            </div>
+          )}
+
+          {isLoading ? (
+            <Loading loading={isLoading} />
+          ) : (
+            <>
+              <div className="    grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-y-10  justify-items-center  ">
+                {productData?.slice(0, visibleProduct).map((product, i) => (
+                  <ProductCard
+                    key={i + 1}
+                    product={product}
+                    attributes={attributes}
+                  />
+                ))}
+              </div>
+
+              {productData?.length > visibleProduct && (
+                <button
+                  onClick={() => setVisibleProduct((pre) => pre + 10)}
+                  className="w-auto mx-auto md:text-sm leading-5 flex items-center transition ease-in-out duration-300 font-medium text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none   bg-[#1E73BE]  text-white md:px-6 lg:px-8 py-2 md:py-3 lg:py-3 hover:text-white   px-12 mt-6 text-sm lg:text-sm"
+                >
+                  More
+                </button>
+              )}
+            </>
+          )}
         </div>
       </div>
     </Layout>

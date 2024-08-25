@@ -69,7 +69,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
   const fetchCellphones = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=66bcbcbdf1b80e0f752b53ba&title=&slug=&count=6"
+        "/products/store?category=66bcb80ef1b80e0f752b5265&title=&slug=&count=6"
       );
       setCellphones(response.data.products);
     } catch (error) {
@@ -238,13 +238,13 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
             </div>
 
             {eAccessoris && <NewArrival data={eAccessoris} />}
+            {cellphones && <NewArrival data={cellphones} />}
             {kitchen && <NewArrival data={kitchen} />}
             {womenFashion && <NewArrival data={womenFashion} />}
-            {/* {cellphones && <NewArrival data={cellphones} />} */}
+
             {/* {computerAccs && <NewArrival data={computerAccs} />} */}
             {/* {beauty && <NewArrival data={beauty} />} */}
             {/* {menFashion && <NewArrival data={menFashion} />} */}
-          
 
             {/* // all products */}
 

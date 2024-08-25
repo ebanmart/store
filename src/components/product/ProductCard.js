@@ -67,7 +67,7 @@ const ProductCard = ({ product, attributes }) => {
       )} */}
 
       <Link href={`/product/${product.slug}`} passHref>
-        <div className="group box-border overflow-hidden flex  shadow-sm pe-0 flex-col items-center  rounded-lg  w-[12rem] lg:w-[15rem] bg-[#F1F5F9] relative">
+        <div className="group box-border overflow-hidden flex  shadow-sm pe-0 flex-col items-center  rounded-lg    w-[12rem] lg:w-[15rem] bg-[#F1F5F9] relative">
           {/* //////// */}
           <div className="w-full flex justify-between">
             {/* <Stock product={product} stock={product.stock} card /> */}
