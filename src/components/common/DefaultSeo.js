@@ -21,7 +21,7 @@ const DefaultSeo = () => {
       openGraph={{
         type: "website",
         locale: "en_IE",
-        url: globalSetting?.meta_url || "https://kachabazar-store.vercel.app/",
+        url: globalSetting?.meta_url || "https://ebanmart.com/",
         site_name:
           globalSetting?.meta_title ||
           "KachaBazar - React Grocery & Organic Food Store e-commerce Template",
