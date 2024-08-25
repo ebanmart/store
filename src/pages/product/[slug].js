@@ -436,8 +436,15 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                           </div>
 
                           <div className="flex items-center mt-4">
-                            <div className="flex items-center justify-between space-s-3 sm:space-s-4 w-full">
-                              <div className="group flex items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-11 md:h-12 border-gray-300">
+                            <div className="flex flex-col lg:flex-row
+                            
+                             space-y-4 lg:space-y-0
+                            items-center justify-between space-s-3 sm:space-s-4 w-full">
+                             
+                             
+                              <div className="group flex w-full lg:w-fit  items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-11 md:h-12 border-gray-300">
+
+
                                 <button
                                   onClick={() => setItem(item - 1)}
                                   disabled={item === 1}
@@ -461,18 +468,22 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                 </button>
                               </div>
 
+
+
                               <button
                                 onClick={() => handleBuyNow(product)}
-                                className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-[#1E73BE]  w-full h-12"
+                                className=" w-full text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-[#1E73BE]   h-12"
                               >
                                 {"Buy Now"}
                               </button>
+
                               <button
                                 onClick={() => handleAddToCart(product)}
                                 className="text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-[#1E73BE]  w-full h-12"
                               >
                                 {t("common:addToCart")}
                               </button>
+
                             </div>
                           </div>
 
