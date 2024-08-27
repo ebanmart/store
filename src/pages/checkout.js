@@ -146,7 +146,7 @@ const Checkout = () => {
                             Number(
                               storeCustomizationSetting?.checkout
                                 ?.shipping_one_cost
-                            ) || 100
+                            ) || 70
                           }
                         />
 

@@ -511,7 +511,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                             <p className="text-xs sm:text-sm text-gray-700 font-medium">
                               Call Us To Order By Mobile Number :{" "}
                               <span className="text-emerald-700 font-semibold">
-                                +0044235234
+                                01316805595
                               </span>{" "}
                             </p>
                           </div>
