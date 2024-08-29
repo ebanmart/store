@@ -19,11 +19,7 @@ const Layout = ({ title, description, children }) => {
           {description && <meta name="description" content={description} />}
           <link rel="icon" href="/favicon.png" />
 
-          <MessengerCustomerChat
-            pageId="YOUR_PAGE_ID"
-            appId="YOUR_APP_ID" // Optional: Include if you want to specify an App ID
-            htmlRef="your_custom_ref" // Optional: Include for custom tracking purposes
-          />
+        
 
           {/* Meta Pixel Code */}
           <script
