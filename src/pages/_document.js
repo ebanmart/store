@@ -19,10 +19,7 @@ class MyDocument extends Document {
           <link rel="icon" href={setting?.favicon || "/favicon.png"} />
           <meta
             property="og:title"
-            content={
-              setting?.meta_title ||
-              "Ebanmart"
-            }
+            content={setting?.meta_title || "Ebanmart"}
           />
           <meta property="og:type" content="eCommerce Website" />
           <meta
@@ -38,17 +35,9 @@ class MyDocument extends Document {
           />
           <meta
             property="og:url"
-            content={
-              setting?.meta_url || "https://ebanmart.com/"
-            }
+            content={setting?.meta_url || "https://ebanmart.com/"}
           />
-          <meta
-            property="og:image"
-            content={
-              setting?.meta_img ||
-              "https://res.cloudinary.com/ahossain/image/upload/v1636729752/facebook-page_j7alju.png"
-            }
-          />
+          <meta property="og:image" content={setting?.meta_img || "/og.jpg"} />
         </Head>
         <body>
           <Main />

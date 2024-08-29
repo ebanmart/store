@@ -18,7 +18,13 @@ const Layout = ({ title, description, children }) => {
           <title>{title ? `Ebanmart | ${title}` : "Ebanmart - Store"}</title>
           {description && <meta name="description" content={description} />}
           <link rel="icon" href="/favicon.png" />
-          
+
+          <MessengerCustomerChat
+            pageId="YOUR_PAGE_ID"
+            appId="YOUR_APP_ID" // Optional: Include if you want to specify an App ID
+            htmlRef="your_custom_ref" // Optional: Include for custom tracking purposes
+          />
+
           {/* Meta Pixel Code */}
           <script
             dangerouslySetInnerHTML={{
@@ -40,13 +46,12 @@ const Layout = ({ title, description, children }) => {
             <img
               height="1"
               width="1"
-              style={{ display: 'none' }}
+              style={{ display: "none" }}
               src="https://www.facebook.com/tr?id=854362180004219&ev=PageView&noscript=1"
               alt=""
             />
           </noscript>
           {/* End Meta Pixel Code */}
-
         </Head>
         {/* <NavBarTop /> */}
         <Navbar />
