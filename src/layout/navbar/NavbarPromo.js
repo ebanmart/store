@@ -75,7 +75,7 @@ const NavbarPromo = () => {
 
   return (
     <>
-      <div className="hidden lg:block xl:block  text-black  bg-primary border-b">
+      <div className="hidden lg:block xl:block  text-black  bg-[#083862] border-b">
         <div className="max-w-screen-2xl mx-auto px-0 sm:px-10 h-12 flex justify-between items-center">
           <div className="inline-flex">
             {console.log(data?.[0]?.children)}
