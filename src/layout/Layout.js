@@ -15,11 +15,11 @@ const Layout = ({ title, description, children }) => {
       <ToastContainer />
       <div className="font-sans">
         <Head>
-          <title>{title ? `Ebanmart | ${title}` : "Ebanmart - Store"}</title>
+          <title>
+            {title ? `EbanMart | ${title}` : "EbanMart Ecommerce -Store"}
+          </title>
           {description && <meta name="description" content={description} />}
           <link rel="icon" href="/favicon.png" />
-
-        
 
           {/* Meta Pixel Code */}
           <script

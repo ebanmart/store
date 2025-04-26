@@ -135,7 +135,7 @@ const Checkout = () => {
                           currency={currency}
                           handleShippingCost={handleShippingCost}
                           register={register}
-                           defaultChacked={true}
+                          defaultChacked={true}
                           value={"Inside Dhaka"}
                           description={showingTranslateValue(
                             storeCustomizationSetting?.checkout
@@ -185,18 +185,16 @@ const Checkout = () => {
                     </h2>
 
                     <div className="grid sm:grid-cols-3 grid-cols-1 gap-4">
-                      {storeSetting?.cod_status && (
-                        <div className="">
-                          <InputPayment
-                            setShowCard={setShowCard}
-                            register={register}
-                            name={t("common:cashOnDelivery")}
-                            value="Cash"
-                            Icon={IoWalletSharp}
-                          />
-                          <Error errorMessage={errors.paymentMethod} />
-                        </div>
-                      )}
+                      <div className="">
+                        <InputPayment
+                          setShowCard={setShowCard}
+                          register={register}
+                          name={t("common:cashOnDelivery")}
+                          value="Cash"
+                          Icon={IoWalletSharp}
+                        />
+                        <Error errorMessage={errors.paymentMethod} />
+                      </div>
 
                       {/* <div className="">
                         <InputPayment
@@ -350,7 +348,6 @@ const Checkout = () => {
                   </span>
                 </div>
 
-
                 <div className="flex items-center py-2 text-sm w-full font-semibold text-gray-500 last:border-b-0 last:text-base last:pb-0">
                   Delivery Charge
                   {/* {showingTranslateValue(
@@ -362,7 +359,6 @@ const Checkout = () => {
                   </span>
                 </div>
 
-
                 <div className="flex items-center py-2 text-sm w-full font-semibold text-gray-500 last:border-b-0 last:text-base last:pb-0">
                   Discount
                   {/* {showingTranslateValue(
@@ -373,7 +369,6 @@ const Checkout = () => {
                     {discountAmount.toFixed(2)}
                   </span>
                 </div>
-
 
                 <div className="border-t mt-4">
                   <div className="flex items-center font-bold font-serif justify-between pt-5 text-sm uppercase">
@@ -387,8 +382,6 @@ const Checkout = () => {
                     </span>
                   </div>
                 </div>
-
-                
               </div>
             </div>
           </div>

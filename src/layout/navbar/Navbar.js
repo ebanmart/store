@@ -45,20 +45,19 @@ const Navbar = () => {
     <>
       <CartDrawer />
 
-      <div className="  text-white bg-[#1E73BE] sticky top-0 z-30">
+      <div className="  text-white  bg-secondary sticky top-0 z-30">
         <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
           <div className="top-bar   flex flex-col lg:flex-row   items-center justify-between py-4 mx-auto">
             <Link href="/" className="mr-3 lg:mr-12 xl:mr-12   lg:block">
               <div className="relative w-32 h-10 ">
                 <Image
-                  width="0"
-                  height="0"
-                  sizes="100vw"
+                  width="220"
+                  height="220"
                   className="w-full h-auto"
                   priority
                   src={
                     storeCustomizationSetting?.navbar?.logo ||
-                    "/logo/logo-white.png"
+                    "/logo/logo-color.png"
                   }
                   alt="logo"
                 />

@@ -12,7 +12,12 @@ module.exports = {
       serif: ["Inter", "sans-serif"],
       DejaVu: ["DejaVu Sans", "Arial", "sans-serif"],
     },
+
     extend: {
+      colors: {
+        primary: "#fa3737",
+        secondary: "#323232",
+      },
       height: {
         header: "560px",
       },
@@ -28,6 +33,7 @@ module.exports = {
       },
     },
   },
+
   plugins: [
     require("@tailwindcss/typography"),
     require("@tailwindcss/forms"),

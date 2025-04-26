@@ -70,7 +70,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
   const fetchBags = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=66bcbcbdf1b80e0f752b53ba&title=&slug=&count=6"
+        "/products/store?category=680be642f3ebbeb569e730a6&title=&slug=&count=6"
       );
       setBags(response.data.products);
     } catch (error) {
@@ -83,7 +83,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
   const fetchCellphones = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=66bcb80ef1b80e0f752b5265&title=&slug=&count=6"
+        "/products/store?category=680cbf71f3ebbeb569e74a68&title=&slug=&count=6"
       );
       setCellphones(response.data.products);
     } catch (error) {
@@ -108,7 +108,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
   const fetchComputerAccs = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=66bcb80ef1b80e0f752b5265&title=&slug=&count=6"
+        "/products/store?category=680cbfb6f3ebbeb569e74ae9&title=&slug=&count=6"
       );
       setComputerAccs(response.data.products);
     } catch (error) {
@@ -121,7 +121,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
   const fetchWomenFashion = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=66bc9552f1b80e0f752b4c06"
+        "/products/store?category=680cc014f3ebbeb569e74af7"
       );
       setWomenFashion(response.data.products);
     } catch (error) {
@@ -147,7 +147,7 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
   const fetchKitchen = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=66bc9733f1b80e0f752b4d20"
+        "/products/store?category=680cc4caf3ebbeb569e74d11"
       );
       setKitchen(response.data.products);
     } catch (error) {
@@ -160,22 +160,9 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
   const fetchMenFashion = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=66bc919ff1b80e0f752b49d9"
+        "/products/store?category=680cc4f2f3ebbeb569e74d52"
       );
       setMenFashion(response.data.products);
-    } catch (error) {
-      console.error("Error fetching men fashion:", error);
-      // Handle error appropriately
-    }
-  };
-
-  // Fetching men fashion
-  const electronicAccessorise = async () => {
-    try {
-      const response = await api.get(
-        "/products/store?category=66bcb537f1b80e0f752b517c"
-      );
-      setAccessoris(response.data.products);
     } catch (error) {
       console.error("Error fetching men fashion:", error);
       // Handle error appropriately
@@ -190,7 +177,6 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
     fetchBeauty();
     fetchKitchen();
     fetchMenFashion();
-    electronicAccessorise();
     fatchBabyProducts();
     fetchBags();
   }, []);

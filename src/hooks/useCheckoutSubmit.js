@@ -30,7 +30,6 @@ const useCheckoutSubmit = (storeSetting) => {
   const [isCouponApplied, setIsCouponApplied] = useState(false);
   const [useExistingAddress, setUseExistingAddress] = useState(false);
   const [isCouponAvailable, setIsCouponAvailable] = useState(false);
-
   const router = useRouter();
   const couponRef = useRef("");
   const [Razorpay] = useRazorpay();
@@ -47,10 +46,6 @@ const useCheckoutSubmit = (storeSetting) => {
     !loading &&
     data?.shippingAddress &&
     Object.keys(data?.shippingAddress)?.length > 0;
-
-  // console.log("storeSetting", storeSetting);
-
-  // console.log("res", data);
 
   const {
     register,
@@ -92,24 +87,22 @@ const useCheckoutSubmit = (storeSetting) => {
       discountPercentage?.type === "fixed"
         ? discountPercentage?.value
         : discountProductTotal * (discountPercentage?.value / 100);
-
     const discountAmountTotal = discountAmount ? discountAmount : 0;
-
     totalValue = Number(subTotal) - discountAmountTotal;
-
     setDiscountAmount(discountAmountTotal);
-
     // console.log("total", totalValue);
-
     setTotal(totalValue);
   }, [cartTotal, shippingCost, discountPercentage]);
 
   const submitHandler = async (data) => {
     try {
+      console.log("hello");
+
       // dispatch({ type: "SAVE_SHIPPING_ADDRESS", payload: data });
       // Cookies.set("shippingAddress", JSON.stringify(data));
       setIsCheckoutSubmit(true);
       setError("");
+
       const userDetails = {
         name: data.name,
         contact: data.contact,
@@ -119,6 +112,8 @@ const useCheckoutSubmit = (storeSetting) => {
         city: data.city,
         zipCode: data.zipCode,
       };
+
+      console.log(userDetails);
 
       let orderInfo = {
         user_info: userDetails,

@@ -1,9 +1,9 @@
 import { Fragment, useState, useEffect, useContext } from "react";
+import useAsync from "@hooks/useAsync";
 import Link from "next/link";
 import { Transition, Popover } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import { MdHome } from "react-icons/md";
-
 import SettingServices from "@services/SettingServices";
 import Cookies from "js-cookie";
 import {
@@ -16,7 +16,6 @@ import {
   FiPocket,
   FiPhoneIncoming,
 } from "react-icons/fi";
-
 //internal import
 import { notifyError } from "@utils/toast";
 import useGetSetting from "@hooks/useGetSetting";
@@ -25,6 +24,9 @@ import { SidebarContext } from "@context/SidebarContext";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 
 const NavbarPromo = () => {
+  const { data, loading, error } = useAsync(() =>
+    CategoryServices.getShowingCategory()
+  );
   const [languages, setLanguages] = useState([]);
   // const [currentLang, setCurrentLang] = useState({});
   const { lang, storeCustomizationSetting } = useGetSetting();
@@ -73,9 +75,10 @@ const NavbarPromo = () => {
 
   return (
     <>
-      <div className="hidden lg:block xl:block  text-black  bg-[#083862] border-b">
+      <div className="hidden lg:block xl:block  text-black  bg-primary border-b">
         <div className="max-w-screen-2xl mx-auto px-0 sm:px-10 h-12 flex justify-between items-center">
           <div className="inline-flex">
+            {console.log(data?.[0]?.children)}
             <Popover className="relative">
               <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between items-center md:justify-start md:space-x-10">
@@ -87,7 +90,7 @@ const NavbarPromo = () => {
                       href="/"
                       className="relative inline-flex items-center      w-full  font-serif   p-2 rounded text-md  font-semibold    text-white "
                     >
-                      <div  className=" cursor-pointer flex  items-center justify-center space-x-1 ">
+                      <div className=" cursor-pointer flex  items-center justify-center space-x-1 ">
                         <span>
                           <MdHome className=" text-xl text-white font-bold" />
                         </span>
