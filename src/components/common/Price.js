@@ -15,8 +15,7 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
                 : "inline-block text-2xl"
             }
           >
-            {currency}
-            {getNumberTwo(price)}
+            ৳{getNumberTwo(price)}
           </span>
           {originalPrice > price ? (
             <>
@@ -27,8 +26,7 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
                     : "text-lg font-normal text-gray-400 ml-1"
                 }
               >
-                {currency}
-                {getNumberTwo(originalPrice)}
+                ৳{getNumberTwo(originalPrice)}
               </del>
             </>
           ) : null}
@@ -42,8 +40,7 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
                 : "inline-block text-2xl"
             }
           >
-            {currency}
-            {getNumberTwo(product?.prices?.price)}
+            ৳{getNumberTwo(product?.prices?.price)}
           </span>
           {originalPrice > price ? (
             <>
@@ -54,8 +51,7 @@ const Price = ({ product, price, card, currency, originalPrice }) => {
                     : "text-lg font-normal text-gray-400 ml-1"
                 }
               >
-                {currency}
-                {getNumberTwo(originalPrice)}
+                ৳{getNumberTwo(originalPrice)}
               </del>
             </>
           ) : null}
