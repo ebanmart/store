@@ -357,7 +357,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
 
                   <div className="w-full">
                     <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row">
-                      <div className=" w-3/5 xl:pr-6 md:pr-6  md:w-2/3 mob-w-full">
+                      <div className="  xl:pr-6 md:pr-6  md:w-2/3 mob-w-full">
                         <div className="mb-6">
                           <h1 className="leading-7 text-lg md:text-xl lg:text-2xl mb-1 font-semibold font-serif text-gray-800">
                             {showingTranslateValue(product?.title)}
@@ -409,7 +409,7 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                             {isReadMore
                               ? showingTranslateValue(
                                   product?.description
-                                )?.slice(0, 230)
+                                )?.slice(0, 10000)
                               : showingTranslateValue(product?.description)}
                             <br />
                             {/* {Object?.keys(product?.description)?.includes(lang)
@@ -436,15 +436,13 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                           </div>
 
                           <div className="flex items-center mt-4">
-                            <div className="flex flex-col lg:flex-row
+                            <div
+                              className="flex flex-col lg:flex-row
                             
                              space-y-4 lg:space-y-0
-                            items-center justify-between space-s-3 sm:space-s-4 w-full">
-                             
-                             
+                            items-center justify-between space-s-3 sm:space-s-4 w-full"
+                            >
                               <div className="group flex w-full lg:w-fit  items-center justify-between rounded-md overflow-hidden flex-shrink-0 border h-11 md:h-12 border-gray-300">
-
-
                                 <button
                                   onClick={() => setItem(item - 1)}
                                   disabled={item === 1}
@@ -468,8 +466,6 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                                 </button>
                               </div>
 
-
-
                               <button
                                 onClick={() => handleBuyNow(product)}
                                 className=" w-full text-sm leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-serif text-center justify-center border-0 border-transparent rounded-md focus-visible:outline-none focus:outline-none text-white px-4 ml-4 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 hover:text-white bg-[#1E73BE]   h-12"
@@ -483,7 +479,6 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
                               >
                                 {t("common:addToCart")}
                               </button>
-
                             </div>
                           </div>
 
