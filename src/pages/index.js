@@ -57,114 +57,107 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
     baseURL: `${process.env.NEXT_PUBLIC_API_BASE_URL}`, // Replace with your API base URL
   });
 
-  const [cellphones, setCellphones] = useState([]);
-  const [computerAccs, setComputerAccs] = useState([]);
-  const [womenFashion, setWomenFashion] = useState([]);
-  const [beauty, setBeauty] = useState([]);
-  const [kitchen, setKitchen] = useState([]);
-  const [menFashion, setMenFashion] = useState([]);
-  const [eAccessoris, setAccessoris] = useState([]);
+  const [gadgetItem, setGadgetItem] = useState([]);
+  const [kitchenDining, setKitchenDining] = useState([]);
+  const [healthHair, setHealthHair] = useState([]);
+  const [accessories, setAccessories] = useState([]);
   const [babyKids, setBabyKids] = useState([]);
-  const [bags, setBags] = useState([]);
+  const [womenFashion, setWomenFashion] = useState([]);
+  const [menFashion, setMenFashion] = useState([]);
 
-  const fetchBags = async () => {
+  // Fetching Gadget item
+  const fetchGadgetItem = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=680cc4f2f3ebbeb569e74d52&title=&slug=&count=6"
+        "/products/store?category=6904c832bd8ad70004b12c90&title=&slug=&count=6"
       );
-      setBags(response.data.products);
+      setGadgetItem(response.data.products);
     } catch (error) {
-      console.error("Error fetching cellphones:", error);
-      // Handle error appropriately
+      console.error("Error fetching gadget items:", error);
     }
   };
 
-  // Fetching cellphones
-  const fetchCellphones = async () => {
+  // Fetching Kitchen & Dining
+  const fetchKitchenDining = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=680cc4caf3ebbeb569e74d11&title=&slug=&count=6"
+        "/products/store?category=6904c2c4ff7ef3000474cdef&title=&slug=&count=6"
       );
-      setCellphones(response.data.products);
+      setKitchenDining(response.data.products);
     } catch (error) {
-      console.error("Error fetching cellphones:", error);
-      // Handle error appropriately
+      console.error("Error fetching kitchen & dining:", error);
     }
   };
 
-  const fatchBabyProducts = async () => {
+  // Fetching Health & Hair
+  const fetchHealthHair = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=680cbf71f3ebbeb569e74a68&title=&slug=&count=6"
+        "/products/store?category=6904c2a37fb26c0004842589&title=&slug=&count=6"
+      );
+      setHealthHair(response.data.products);
+    } catch (error) {
+      console.error("Error fetching health & hair:", error);
+    }
+  };
+
+  // Fetching Accessories
+  const fetchAccessories = async () => {
+    try {
+      const response = await api.get(
+        "/products/store?category=6904c23cff7ef3000474cde5&title=&slug=&count=6"
+      );
+      setAccessories(response.data.products);
+    } catch (error) {
+      console.error("Error fetching accessories:", error);
+    }
+  };
+
+  // Fetching Baby & Kids
+  const fetchBabyKids = async () => {
+    try {
+      const response = await api.get(
+        "/products/store?category=6904c1e9a1d8080004bda905&title=&slug=&count=6"
       );
       setBabyKids(response.data.products);
     } catch (error) {
-      console.error("Error fetching cellphones:", error);
-      // Handle error appropriately
+      console.error("Error fetching baby & kids:", error);
     }
   };
 
-  // Fetching computer accessories
-  const fetchComputerAccs = async () => {
-    try {
-      const response = await api.get(
-        "/products/store?category=680cc042f3ebbeb569e74b38&title=&slug=&count=6"
-      );
-      setComputerAccs(response.data.products);
-    } catch (error) {
-      console.error("Error fetching computer accessories:", error);
-      // Handle error appropriately
-    }
-  };
-
-  // Fetching women fashion
+  // Fetching Women Fashion
   const fetchWomenFashion = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=680cc014f3ebbeb569e74af7"
+        "/products/store?category=6904c25912c51f00045913f4&title=&slug=&count=6"
       );
       setWomenFashion(response.data.products);
     } catch (error) {
       console.error("Error fetching women fashion:", error);
-      // Handle error appropriately
     }
   };
 
-  // Fetching beauty products
-  const fetchBeauty = async () => {
+  // Fetching Men Fashion
+  const fetchMenFashion = async () => {
     try {
       const response = await api.get(
-        "/products/store?category=680be642f3ebbeb569e730a6"
+        "/products/store?category=6904c283a1d8080004bda90f&title=&slug=&count=6"
       );
-      setBeauty(response.data.products);
+      setMenFashion(response.data.products);
     } catch (error) {
-      console.error("Error fetching beauty products:", error);
-      // Handle error appropriately
-    }
-  };
-
-  // Fetching kitchen items
-  const fetchKitchen = async () => {
-    try {
-      const response = await api.get(
-        "/products/store?category=680cbfb6f3ebbeb569e74ae9"
-      );
-      setKitchen(response.data.products);
-    } catch (error) {
-      console.error("Error fetching kitchen items:", error);
-      // Handle error appropriately
+      console.error("Error fetching men fashion:", error);
     }
   };
 
   // Fetching all categories when the component mounts
   useEffect(() => {
-    fetchCellphones();
-    fetchComputerAccs();
+    fetchGadgetItem();
+    fetchKitchenDining();
+    fetchHealthHair();
+    fetchAccessories();
+    fetchBabyKids();
     fetchWomenFashion();
-    fetchBeauty();
-    fetchKitchen();
-    fatchBabyProducts();
-    fetchBags();
+    fetchMenFashion();
   }, []);
 
   const router = useRouter();
@@ -237,17 +230,13 @@ const Home = ({ popularProducts, discountProducts, attributes }) => {
               </div>
             </div>
 
-            {bags && <NewArrival data={bags} />}
-            {cellphones && <NewArrival data={cellphones} />}
-            {babyKids && <NewArrival data={babyKids} />}
-            {computerAccs && <NewArrival data={computerAccs} />}
-            {womenFashion && <NewArrival data={womenFashion} />}
-            {beauty && <NewArrival data={beauty} />}
-
-
-
-            {/* {babyKids && <NewArrival data={babyKids} />} */}
-            {kitchen && <NewArrival data={kitchen} />}
+            {gadgetItem.length > 0 && <NewArrival data={gadgetItem} />}
+            {kitchenDining.length > 0 && <NewArrival data={kitchenDining} />}
+            {healthHair.length > 0 && <NewArrival data={healthHair} />}
+            {accessories.length > 0 && <NewArrival data={accessories} />}
+            {babyKids.length > 0 && <NewArrival data={babyKids} />}
+            {womenFashion.length > 0 && <NewArrival data={womenFashion} />}
+            {menFashion.length > 0 && <NewArrival data={menFashion} />}
 
             {/* feature category's */}
           </div>
