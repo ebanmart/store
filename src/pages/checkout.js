@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { CardElement } from "@stripe/react-stripe-js";
 import Link from "next/link";
@@ -26,6 +26,7 @@ import useCheckoutSubmit from "@hooks/useCheckoutSubmit";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import SettingServices from "@services/SettingServices";
 import SwitchToggle from "@components/form/SwitchToggle";
+import * as fbPixel from "@lib/fb-pixel";
 
 const Checkout = () => {
   const { t } = useTranslation();
@@ -59,6 +60,22 @@ const Checkout = () => {
     isCouponAvailable,
     handleDefaultShippingAddress,
   } = useCheckoutSubmit();
+
+  // Track InitiateCheckout event for Facebook Pixel
+  useEffect(() => {
+    if (!isEmpty && items.length > 0 && total > 0) {
+      fbPixel.initiateCheckout({
+        content_ids: items.map((item) => item.id),
+        contents: items.map((item) => ({
+          id: item.id,
+          quantity: item.quantity,
+        })),
+        value: parseFloat(total),
+        currency: currency || "BDT",
+        num_items: items.reduce((acc, item) => acc + item.quantity, 0),
+      });
+    }
+  }, [isEmpty, items, total, currency]);
 
   return (
     <>

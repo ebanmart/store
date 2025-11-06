@@ -15,6 +15,7 @@ import CouponServices from "@services/CouponServices";
 import { notifyError, notifySuccess } from "@utils/toast";
 import CustomerServices from "@services/CustomerServices";
 import NotificationServices from "@services/NotificationServices";
+import * as fbPixel from "@lib/fb-pixel";
 
 const useCheckoutSubmit = (storeSetting) => {
   const { dispatch } = useContext(UserContext);
@@ -216,6 +217,19 @@ const useCheckoutSubmit = (storeSetting) => {
         };
         // notification api call
         await NotificationServices.addNotification(notificationInfo);
+
+        // Track Purchase event for Facebook Pixel
+        fbPixel.purchase({
+          value: parseFloat(orderResponse?.total),
+          currency: "BDT",
+          content_ids: items.map((item) => item.id),
+          content_type: "product",
+          contents: items.map((item) => ({
+            id: item.id,
+            quantity: item.quantity,
+          })),
+          num_items: items.reduce((acc, item) => acc + item.quantity, 0),
+        });
 
         router.push(`/order/${orderResponse?._id}`);
         notifySuccess("Your Order Confirmed!");

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useCart } from "react-use-cart";
 
 import { notifyError, notifySuccess } from "@utils/toast";
+import * as fbPixel from "@lib/fb-pixel";
 
 const useAddToCart = () => {
   const [item, setItem] = useState(1);
@@ -32,6 +33,16 @@ const useAddToCart = () => {
       ) {
         addItem(updatedProduct, item);
         notifySuccess(`${item} ${product.title} added to cart!`);
+
+        // Track AddToCart event for Facebook Pixel
+        fbPixel.addToCart({
+          content_name: product.title,
+          content_ids: [product.id],
+          content_type: "product",
+          value: product.price * item,
+          currency: "BDT",
+          num_items: item,
+        });
       } else {
         notifyError("Insufficient stock!");
       }
@@ -44,6 +55,16 @@ const useAddToCart = () => {
       ) {
         addItem(updatedProduct, item);
         notifySuccess(`${item} ${product.title} added to cart!`);
+
+        // Track AddToCart event for Facebook Pixel
+        fbPixel.addToCart({
+          content_name: product.title,
+          content_ids: [product.id],
+          content_type: "product",
+          value: product.price * item,
+          currency: "BDT",
+          num_items: item,
+        });
       } else {
         notifyError("Insufficient stock!");
       }

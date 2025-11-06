@@ -14,6 +14,7 @@ import PageHeader from "@components/header/PageHeader";
 import useGetSetting from "@hooks/useGetSetting";
 import CMSkeleton from "@components/preloader/CMSkeleton";
 import useUtilsFunction from "@hooks/useUtilsFunction";
+import * as fbPixel from "@lib/fb-pixel";
 
 const ContactUs = () => {
   const { t } = useTranslation();
@@ -30,6 +31,11 @@ const ContactUs = () => {
     notifySuccess(
       "your message sent successfully. We will contact you shortly."
     );
+
+    // Track Contact event for Facebook Pixel
+    fbPixel.contact({
+      content_name: "Contact Form Submission",
+    });
   };
 
   return (

@@ -13,14 +13,25 @@ import { SidebarContext } from "@context/SidebarContext";
 import Loading from "@components/preloader/Loading";
 import AttributeServices from "@services/AttributeServices";
 import Category from "@components/category/Category";
+import * as fbPixel from "@lib/fb-pixel";
+import { useRouter } from "next/router";
 
 const Search = ({ products, attributes }) => {
   const { t } = useTranslation();
+  const router = useRouter();
   const { isLoading, setIsLoading } = useContext(SidebarContext);
   const [visibleProduct, setVisibleProduct] = useState(18);
 
   useEffect(() => {
     setIsLoading(false);
+
+    // Track Search event for Facebook Pixel
+    if (router.query.query) {
+      fbPixel.search({
+        search_string: router.query.query,
+        content_ids: products?.map((p) => p._id) || [],
+      });
+    }
   }, [products]);
 
   const { setSortedField, productData } = useFilter(products);

@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
 import { notifyError, notifySuccess } from "@utils/toast";
+import * as fbPixel from "@lib/fb-pixel";
 
 const useLoginSubmit = (phoneNumber) => {
   
@@ -25,6 +26,13 @@ const useLoginSubmit = (phoneNumber) => {
         { name, phone, password }
       );
       notifySuccess(response.data.message);
+
+      // Track CompleteRegistration event for Facebook Pixel
+      fbPixel.completeRegistration({
+        content_name: "User Registration",
+        status: "success",
+      });
+
       return true;
     } catch (error) {
       notifyError(error.response ? error.response.data.message : error.message);

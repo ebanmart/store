@@ -18,6 +18,7 @@ import { UserProvider } from "@context/UserContext";
 import DefaultSeo from "@components/common/DefaultSeo";
 import { SidebarProvider } from "@context/SidebarContext";
 import SettingServices from "@services/SettingServices";
+import * as fbPixel from "@lib/fb-pixel";
 
 let persistor = persistStore(store);
 
@@ -51,6 +52,27 @@ function MyApp({ Component, pageProps }) {
       };
     }
   }, [storeSetting]);
+
+  // Facebook Pixel PageView tracking on route changes
+  useEffect(() => {
+    // Track initial page view
+    if (typeof window !== "undefined" && window.fbq) {
+      fbPixel.pageview();
+    }
+
+    // Track page view on route change
+    const handleRouteChange = () => {
+      if (typeof window !== "undefined" && window.fbq) {
+        fbPixel.pageview();
+      }
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
 
   // console.log("storeSetting", storeSetting, "stripePromise", stripePromise);
 

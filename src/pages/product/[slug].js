@@ -34,6 +34,7 @@ import ProductServices from "@services/ProductServices";
 import useUtilsFunction from "@hooks/useUtilsFunction";
 import Discount from "@components/common/Discount";
 import ImageCarousel from "@components/carousel/ImageCarousel";
+import * as fbPixel from "@lib/fb-pixel";
 
 const ProductScreen = ({ product, attributes, relatedProducts }) => {
   const router = useRouter();
@@ -160,7 +161,19 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
 
   useEffect(() => {
     setIsLoading(false);
-  }, [product]);
+
+    // Track ViewContent event for Facebook Pixel
+    if (product?._id && price > 0) {
+      fbPixel.viewContent({
+        content_name: showingTranslateValue(product?.title),
+        content_ids: [product?._id],
+        content_type: "product",
+        value: price || getNumber(product?.prices?.price),
+        currency: currency || "BDT",
+        content_category: showingTranslateValue(product?.category?.name),
+      });
+    }
+  }, [product?._id, price, currency]);
 
   const handleAddToCart = (p) => {
     if (p.variants.length === 1 && p.variants[0].quantity < 1)
@@ -210,6 +223,16 @@ const ProductScreen = ({ product, attributes, relatedProducts }) => {
         originalPrice: originalPrice,
       };
       handleAddItem(newItem);
+
+      // Track AddToCart event for Facebook Pixel
+      fbPixel.addToCart({
+        content_name: newItem.title,
+        content_ids: [newItem.id],
+        content_type: "product",
+        value: newItem.price * item,
+        currency: currency || "BDT",
+        num_items: item,
+      });
     } else {
       return notifyError("Please select all variant first!");
     }
